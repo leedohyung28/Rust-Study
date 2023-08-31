@@ -1,5 +1,6 @@
 fn main() {
-    step1_1();
+    // step1_1();
+    step1_2();
 }
 
 fn step1_1() {
@@ -33,3 +34,34 @@ fn brackets_test() {
     // Rust에서는 {}를 통해 그 다음 인수 값을 호출
 }
 
+fn step1_2() {
+    // let_test();
+    // mut_test();
+    variable_shadowing_test();
+}
+fn let_test() {
+    let a_number;
+    a_number = 10;
+    // let은 변수를 declare하고 bind할 수 있다.
+
+    let a_word = "Ten";
+    // let은 변수를 declare하는 동시에 bind할 수도 있다.
+
+    println!("The number is {}", a_number);
+    println!("The word is {}", a_word);
+}
+fn mut_test() {
+    let mut a_number = 10;
+    // mut은 변수를 바꿀 수 있다.
+    println!("Previous num : {}", a_number);
+    a_number = 15;
+    println!("Now num : {}", a_number);
+}
+fn variable_shadowing_test() {
+    let shadow_num = 5;
+    let shadow_num = shadow_num + 5;
+    let shadow_num = shadow_num * 2;
+    println!("Result : {}", shadow_num);
+    // 기존 변수의 이름을 활용하는 새 변수를 선언 가능하다.
+    // 이를 Rust에서는 "Shadowing"이라고 한다.
+}
