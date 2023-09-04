@@ -1,7 +1,8 @@
 fn main() {
     // step1_1();
     // step1_2();
-    step1_3();
+    // step1_3();
+    step1_4();
 }
 
 fn step1_1() {
@@ -88,7 +89,7 @@ fn num_type_test() {
     // 종속   : isize, usize
 }
 fn float_type_test() {
-    // 10지수 : f32, f64 졵 (기본 부동 소수점 형식 : f64)
+    // 10지수 : f32, f64 존재 (기본 부동 소수점 형식 : f64)
     // f64는 f32와 속도는 비슷 but 더욱 정밀
 
     let number_64 = 4.0;    // compiler가 자동적으로 f64로 인식
@@ -121,5 +122,59 @@ fn char_test() {
     // &str : 프로그램이 실행될 때 변하지 않는 텍스트 데이터에 대한 변경 불가능한 보기
 
     println!("{} is a {}{}{}{}.", smiley_face, uppercase_s, string_1, lowercase_f, string_2);
+}
+
+fn step1_4() {
+    // tuple_test();
+    // struct_test();
+
+    // 튜플은 다양한 형식의 값 컬렉션이며, 길이는 요소 수에 따라 고정된다.
+    // 구조체의 각 필드에는 이름과 데이터 형식이 있지만, 튜플 구조체의 필드에는 이름이 없다.
+}
+fn tuple_test() {
+    // 튜플 : 하나의 복합 값으로 수집되는 다양한 형식을 그룹화
+    // (<value>, <value>, ...)
+    // 괄호로 묶음, 쉼표로 구분
+    // 요소의 수와 동일한 고정 길이
+    // 선언 이후 크기 확대X, 축소X, 요소 추가X, 요소 제거X
+    
+    let tuple_1 = ('E', 5i32, true);
+    // 요소     값      데이터 형식
+    //   0      E            char
+    //   1      5             i32
+    //   2   true            bool
+
+    println!("Is '{}' the {}th letter of the alphabet? {}", tuple_1.0, tuple_1.1, tuple_1.2);
+    // tuple은 요소에 액세스할 때
+    // <tuple>.<index>를 사용한다.
+}
+fn struct_test() {
+    // 구조체 : 다른 형식으로 구성된 형식
+    // 이름으로 구조체 정의 -> 각 필드에 대한 데이터 형식 지정 -> 구조체의 인스턴스 생성 -> 인스턴스 선언 시 필드의 특정 값 제공
+
+    // 구조체의 종류
+    // 1. 클래식 C 구조체 : 이름과 데이터 형식, 정의 후 <struct>.<field>를 사용하여 액세스
+    // 2. 튜플 구조체 : 클래식 구조체와 유사 but 필드에 이름 X, <tuple>.<index>를 사용, 인덱스 값 0부터 시작
+    // 3. 단위 구조체 : 가장 일반적인 사용
+
+    // 1. 클래식 구조체
+    struct Student { name: String, level: u8, remote: bool}
+
+    // 2. 튜플 구조체
+    struct Grades(char, char, char, char, f32);
+
+    // 3. 단위 구조체
+    struct Unit;
+
+    let user_1 = Student { name: String::from("Dohyung Lee"), remote: true, level: 2};
+    let user_2 = Student { name: "James Maddison".to_string(), level: 7, remote: false};
+    // 문자열 리터럴을 문자열 형식으로 반환
+    // .to_string()또는 String::from(&str)을 통해 반환 가능
+    let mark_1 = Grades('A', 'A', 'B', 'A', 3.75);
+    let mark_2 = Grades('B', 'A', 'A', 'C', 3.25);
+    println!("{}, level {}. Remote: {}, Grades: {}, {}, {}, {}. Average: {}",
+user_1.name, user_1.level, user_1.remote, mark_1.0, mark_1.1, mark_1.2, mark_1.3, mark_1.4);
+println!("{}, level {}. Remote: {}, Grades: {}, {}, {}, {}. Average: {}",
+user_2.name, user_2.level, user_2.remote, mark_2.0, mark_2.1, mark_2.2, mark_2.3, mark_2.4);
 }
 
